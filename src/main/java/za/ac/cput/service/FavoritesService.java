@@ -6,7 +6,6 @@ import za.ac.cput.repository.FavoritesRespository;
 import za.ac.cput.domain.Favorites;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 @Service
 public class FavoritesService implements IFavoritesService {
     private FavoritesRespository repository;
