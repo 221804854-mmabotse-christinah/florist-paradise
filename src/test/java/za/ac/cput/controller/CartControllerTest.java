@@ -10,11 +10,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import za.ac.cput.domain.Cart;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Product;
-import za.ac.cput.domain.Review;
-import za.ac.cput.factory.ReviewFactory;
-import za.ac.cput.service.ReviewService;
+import za.ac.cput.factory.CartFactory;
+import za.ac.cput.service.CartService;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -25,21 +25,20 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class ReviewControllerTest {
+class CartControllerTest {
 
     @Mock
-    private ReviewService reviewService;
+    private CartService cartService;
 
     @InjectMocks
-    private ReviewController reviewController;
+    private CartController cartController;
 
-    private Review review;
-    private Set<Review> reviewSet;
+    private Cart cart;
+    private Set<Cart> cartSet;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-
         Customer customer = new Customer.Builder()
                 .setCustomerId(1L)
                 .setName("John")
@@ -56,76 +55,78 @@ class ReviewControllerTest {
                 .setImageUrl("http://example.com/rose.jpg")
                 .build();
 
-        review = ReviewFactory.createProductReview(product, customer, 3, "favourite flower", LocalDate.now());
+        cart = CartFactory.createCart(customer, product,3, 2, 5, LocalDate.now());
 
-        reviewSet = new HashSet<>();
-        reviewSet.add(review);
+        cartSet = new HashSet<>();
+        cartSet.add(cart);
     }
 
     @Test
     @Order(1)
     void testCreate() {
-        when(reviewService.create(any(Review.class))).thenReturn(review);
+        when(cartService.create(any(Cart.class))).thenReturn(cart);
 
-        ResponseEntity<Review> response = reviewController.createReview(review);
+        ResponseEntity<Cart> response = cartController.createCart(cart);
         assertNotNull(response.getBody());
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals(review, response.getBody());
-        verify(reviewService, times(1)).create(review);
-        System.out.println("Created Review: " + response.getBody());
+        assertEquals(cart, response.getBody());
+        verify(cartService, times(1)).create(cart);
+        System.out.println("Created Cart: " + response.getBody());
     }
 
     @Test
     @Order(2)
     void testRead() {
-        when(reviewService.read(anyLong())).thenReturn(review);
+        when(cartService.read(anyLong())).thenReturn(cart);
 
-        ResponseEntity<Review> response = reviewController.readReview(review.getReviewId());
+        ResponseEntity<Cart> response = cartController.readCart(cart.getCartId());
         assertNotNull(response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(review, response.getBody());
-        verify(reviewService, times(1)).read(review.getReviewId());
-        System.out.println("Read Review: " + response.getBody());
+        assertEquals(cart, response.getBody());
+        verify(cartService, times(1)).read(cart.getCartId());
+        System.out.println("Read Cart: " + response.getBody());
     }
 
     @Test
     @Order(3)
     void testUpdate() {
-        Review updatedReview = new Review.Builder().copy(review)
-                .setComment("Updated comment").build();
+        Cart updatedCart = new Cart.Builder()
+                .copy(cart)
+                .setQuantity(3)
+                .build();
 
-        when(reviewService.update(any(Review.class))).thenReturn(updatedReview);
+        when(cartService.update(any(Cart.class))).thenReturn(updatedCart);
 
-        ResponseEntity<Review> response = reviewController.updateReview(updatedReview);
+        ResponseEntity<Cart> response = cartController.updateCart(updatedCart);
         assertNotNull(response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(updatedReview, response.getBody());
-        verify(reviewService, times(1)).update(updatedReview);
-        System.out.println("Updated Review: " + response.getBody());
+        assertEquals(updatedCart, response.getBody());
+        verify(cartService, times(1)).update(updatedCart);
+        System.out.println("Updated Cart: " + response.getBody());
     }
 
     @Test
     @Order(4)
     void testDelete() {
-        doNothing().when(reviewService).delete(anyLong());
+        doNothing().when(cartService).delete(anyLong());
 
-        ResponseEntity<Void> response = reviewController.deleteReview(review.getReviewId());
+        ResponseEntity<Void> response = cartController.deleteCart(cart.getCartId());
         assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
-        verify(reviewService, times(1)).delete(review.getReviewId());
-        System.out.println("Deleted Review Successfully");
+        verify(cartService, times(1)).delete(cart.getCartId());
+        System.out.println("Deleted Cart Successfully");
     }
 
     @Test
     @Order(5)
     void testGetAll() {
-        when(reviewService.getall()).thenReturn(reviewSet);
+        when(cartService.getall()).thenReturn(cartSet);
 
-        ResponseEntity<Set<Review>> response = reviewController.getAllReviews();
+        ResponseEntity<Set<Cart>> response = cartController.getAllCarts();
         assertNotNull(response.getBody());
         assertFalse(response.getBody().isEmpty());
         assertEquals(1, response.getBody().size());
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        verify(reviewService, times(1)).getall();
-        System.out.println("All Reviews: " + response.getBody());
+        verify(cartService, times(1)).getall();
+        System.out.println("All Carts: " + response.getBody());
     }
 }
