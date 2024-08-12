@@ -14,11 +14,8 @@ import za.ac.cput.domain.Favorites;
 import za.ac.cput.domain.Product;
 import za.ac.cput.factory.FavoritesFactory;
 import za.ac.cput.service.FavoritesService;
-
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 

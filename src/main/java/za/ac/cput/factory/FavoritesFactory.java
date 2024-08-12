@@ -6,7 +6,6 @@ import za.ac.cput.domain.Product;
 import za.ac.cput.utility.Helper;
 
 public class FavoritesFactory {
-
     public static Favorites createFavorites(Product product, Customer customer) {
         if ((customer == null) || (product == null)) {
             return null;

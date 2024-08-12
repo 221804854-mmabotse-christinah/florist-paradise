@@ -13,11 +13,8 @@ import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.Product;
 import za.ac.cput.factory.ProductFactory;
 import za.ac.cput.service.ProductService;
-
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;

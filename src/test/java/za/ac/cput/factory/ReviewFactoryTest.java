@@ -12,7 +12,6 @@ import java.time.LocalDate;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class ReviewFactoryTest {
-
     private Review reviewA;
     private Review reviewB;
 

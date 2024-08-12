@@ -39,7 +39,6 @@ class FavoritesFactoryTest {
 
     @Test
     void testCreateFavoriteDifferentProducts() {
-        // Arrange
         Customer customer = new Customer.Builder()
                 .setCustomerId(1L)
                 .setName("Mabotse")
@@ -56,7 +55,6 @@ class FavoritesFactoryTest {
                 .build();
         Favorites favorites = FavoritesFactory.createFavorites(product, customer);
 
-        // Assert
         Assertions.assertNotNull(favorites);
         Assertions.assertEquals(product, favorites.getProduct());
         Assertions.assertEquals(customer, favorites.getCustomer());

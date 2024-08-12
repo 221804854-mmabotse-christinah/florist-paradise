@@ -6,7 +6,6 @@ import za.ac.cput.domain.Product;
 import za.ac.cput.repository.ProductRepository;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 @Service
 public class ProductService implements IProductService {
     private ProductRepository repository;

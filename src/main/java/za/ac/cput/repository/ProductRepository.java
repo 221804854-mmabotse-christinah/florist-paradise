@@ -6,7 +6,6 @@ import za.ac.cput.domain.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-
     Product findByProductId(Long id);
 
 }

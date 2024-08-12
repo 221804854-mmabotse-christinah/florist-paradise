@@ -11,7 +11,6 @@ class ProductFactoryTest {
 
     @Test
     void testCreateProduct() {
-        // Arrange
         String productName = "Sunflower";
         String productDescription = "The common sunflower is a species of large annual forb of the daisy family Asteraceae.";
         Long flowershopId = 1L;
@@ -19,10 +18,8 @@ class ProductFactoryTest {
         String imageUrl = "https://cdn.prod.website-files.com/628ee8cd8f04ca5405cebd16/652e201aee89d21a4173b839_Growing%20Sunflower-banner.jpg";
         Integer quantity = 5;
 
-        // Act
         Product product = ProductFactory.createProduct(productName, productDescription,flowershopId, price, imageUrl, quantity);
 
-        // Assert
         Assertions.assertNotNull(product);
         Assertions.assertEquals(productName, product.getProductName());
         Assertions.assertEquals(productDescription, product.getProductDescription());
@@ -36,7 +33,6 @@ class ProductFactoryTest {
 
     @Test
     void testCreateProductWithInvalidInputs() {
-        // Arrange
         String invalidProductName = "";
         String invalidProductDescription = "";
         Long invalidFlowershopId = 0L;
@@ -44,10 +40,8 @@ class ProductFactoryTest {
         String invalidImageUrl = "";
         Integer invalidQuantity = 0;
 
-        // Act
         Product product = ProductFactory.createProduct(invalidProductName, invalidProductDescription, invalidFlowershopId, invalidPrice, invalidImageUrl, invalidQuantity);
 
-        // Assert
         Assertions.assertNull(product);
         System.out.println(product);
     }

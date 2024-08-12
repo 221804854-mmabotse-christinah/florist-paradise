@@ -3,7 +3,6 @@ package za.ac.cput.service;
 import za.ac.cput.domain.Review;
 
 import java.util.Set;
-
 public interface IReviewService extends IService<Review, Long>{
 
     Set<Review> getall();

@@ -15,7 +15,6 @@ public class Favorites {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
-
     protected Favorites() {
     }
 
