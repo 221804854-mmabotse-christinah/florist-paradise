@@ -115,7 +115,7 @@ public class Customer {
             return this;
         }
 
-        public CustomerBuilder copy(CustomerBuilder customerBuilder) {
+        public CustomerBuilder copy(Customer customerBuilder) {
             this.customerId = customerBuilder.customerId;
             this.firstName = customerBuilder.firstName;
             this.lastName = customerBuilder.lastName;
