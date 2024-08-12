@@ -15,12 +15,9 @@ import za.ac.cput.domain.Product;
 import za.ac.cput.domain.Review;
 import za.ac.cput.factory.ReviewFactory;
 import za.ac.cput.service.ReviewService;
-
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 

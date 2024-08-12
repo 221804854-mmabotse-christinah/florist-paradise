@@ -16,7 +16,6 @@ class CartFactoryTest {
     @Test
     @Order(1)
     void testCreateCart() {
-        // Arrange
         Customer customer = new Customer.Builder()
                 .setCustomerId(1L)
                 .setName("Mabotse")
@@ -37,10 +36,8 @@ class CartFactoryTest {
         double subtotal = 21.98;
         LocalDate createdDate = LocalDate.now();
 
-        // Act
         Cart cart = CartFactory.createCart(customer, product, price, quantity, subtotal, createdDate);
 
-        // Assert
         Assertions.assertNotNull(cart);
         Assertions.assertEquals(customer, cart.getCustomer());
         Assertions.assertEquals(product, cart.getProduct());

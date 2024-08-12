@@ -15,10 +15,8 @@ import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Product;
 import za.ac.cput.factory.CartFactory;
 import za.ac.cput.service.CartService;
-
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;

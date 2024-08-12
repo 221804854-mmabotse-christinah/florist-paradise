@@ -22,7 +22,6 @@ public class Product {
     @Column(name = "quantity")
     private int quantity;
 
-    //This should be protected , @Mabotse Something is wrong with your review class , you're building a review with an empty product and customer
     public Product() {
     }
     private Product(Builder builder) {

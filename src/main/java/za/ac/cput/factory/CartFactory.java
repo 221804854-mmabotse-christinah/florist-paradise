@@ -8,7 +8,6 @@ import za.ac.cput.utility.Helper;
 import java.time.LocalDate;
 
 public class CartFactory {
-
     public static Cart createCart(Customer customer,Product product, double price, int quantity, double subtotal, LocalDate createdDate) {
         if (product == null || customer == null || price == 0 || createdDate == null) {
             return null;

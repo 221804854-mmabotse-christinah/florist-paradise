@@ -15,7 +15,6 @@ public class Review {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
-
     @Column(name = "rating", nullable = false)
     private int rating;
 
