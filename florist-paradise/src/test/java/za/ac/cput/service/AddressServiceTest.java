@@ -3,14 +3,14 @@ package za.ac.cput.service;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Address;
 import za.ac.cput.domain.AddressId;
 import za.ac.cput.factory.AddressFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Service
 class AddressServiceTest {
 
     @Autowired
